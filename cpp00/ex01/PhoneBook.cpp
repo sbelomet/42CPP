@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 12:38:18 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/03/20 10:50:53 by sbelomet         ###   ########.fr       */
+/*   Created: 2024/03/20 10:44:37 by sbelomet          #+#    #+#             */
+/*   Updated: 2024/03/20 12:50:15 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
-# include "Contact.hpp"
+#include <iostream>
+#include <string>
+#include "PhoneBook.hpp"
 
-class PhoneBook
+void PhoneBook::shift_contacts(void)
 {
-	public:
-		Contact contacts[8];
-		void 	shift_contacts(void);
-};
-
-#endif
+	for (int i = 1; i < 8; i++)
+	{
+		contacts[i - 1] = contacts[i];
+	}
+	
+}

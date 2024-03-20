@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/19 12:38:18 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/03/20 10:50:53 by sbelomet         ###   ########.fr       */
+/*   Created: 2024/03/20 11:31:06 by sbelomet          #+#    #+#             */
+/*   Updated: 2024/03/20 11:36:40 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
-# include "Contact.hpp"
+#include <iostream>
+#include <string>
+#include "PhoneBook.hpp"
+#include "Contact.hpp"
 
-class PhoneBook
+void Contact::clear_contact(void)
 {
-	public:
-		Contact contacts[8];
-		void 	shift_contacts(void);
-};
-
-#endif
+	first_name.clear();
+	last_name.clear();
+	nickname.clear();
+	phone_num.clear();
+	darkest_secret.clear();
+}

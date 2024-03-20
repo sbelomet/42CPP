@@ -6,7 +6,7 @@
 #    By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/19 11:01:54 by sbelomet          #+#    #+#              #
-#    Updated: 2024/03/19 14:02:09 by sbelomet         ###   ########.fr        #
+#    Updated: 2024/03/20 11:37:57 by sbelomet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ RAINBOW		=	$(RED)-$(YELLOW)-$(GREEN)-$(CYAN)-$(BLUE)-$(PURPLE)-
 
 # Sources
 
-FILES		=	main
+FILES		=	main PhoneBook Contact
 
 SRC			=	$(addsuffix .cpp, $(FILES))
 OBJ			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))
