@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 11:35:15 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/03/28 13:03:50 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/04/02 10:16:30 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,22 @@ Fixed::Fixed(void)
     return ;
 }
 
-Fixed::Fixed(int const input)
+Fixed::Fixed(int const inputInt)
 {
     std::cout << "Int constructor called" << std::endl;
-	this->_value = input;
+	this->_value = inputInt << this->_fractBits;
+    return ;
+}
+
+Fixed::Fixed(float const inputFloat)
+{
+    std::cout << "Float constructor called" << std::endl;
+	float input = inputFloat;
+	for (int i = 0; i < this->_fractBits; i++)
+	{
+		input *= 2;
+	}
+	this->_value = roundf(input);
     return ;
 }
 
@@ -31,7 +43,7 @@ Fixed::Fixed(int const input)
 Fixed::Fixed(const Fixed &other)
 {
     std::cout << "Copy constructor called" << std::endl;
-	this->_value = other.getRawBits();
+	*this = other;
     return ;
 }
 
@@ -39,13 +51,13 @@ Fixed::Fixed(const Fixed &other)
 Fixed &Fixed::operator=(const Fixed &other)
 {
     std::cout << "Copy assignment operator called" << std::endl;
-    this->_value = other.getRawBits();
+    this->_value = other._value;
     return (*this);
 }
 
 std::ostream &operator<<(std::ostream &o, const Fixed &F)
 {
-	o << F.getRawBits();
+	o << F.toFloat();
 	return o;
 }
 
@@ -65,4 +77,19 @@ int Fixed::getRawBits(void) const
 void Fixed::setRawBits(int const raw)
 {
 	this->_value = raw;
+}
+
+float Fixed::toFloat(void) const
+{
+	float res = this->_value;
+	for (int i = 0; i < this->_fractBits; i++)
+	{
+		res /= 2;
+	}
+    return res;
+}
+
+int Fixed::toInt(void) const
+{
+	return this->_value >> this->_fractBits;
 }

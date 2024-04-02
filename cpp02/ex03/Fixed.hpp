@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/28 11:35:10 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/04/02 09:49:51 by sbelomet         ###   ########.fr       */
+/*   Created: 2024/04/02 14:13:38 by sbelomet          #+#    #+#             */
+/*   Updated: 2024/04/02 14:13:41 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,37 @@ class Fixed
 		Fixed(int const inputInt);
 		Fixed(float const inputFloat);
         Fixed(const Fixed& other);
-        Fixed &operator=(const Fixed &other);
         ~Fixed();
+
+		Fixed &operator=(const Fixed &other);
+
+		bool operator>(const Fixed &other) const;
+		bool operator<(const Fixed &other) const;
+		bool operator>=(const Fixed &other) const;
+		bool operator<=(const Fixed &other) const;
+		bool operator==(const Fixed &other) const;
+		bool operator!=(const Fixed &other) const;
+
+		Fixed operator+(const Fixed &other) const;
+		Fixed operator-(const Fixed &other) const;
+		Fixed operator*(const Fixed &other) const;
+		Fixed operator/(const Fixed &other) const;
+
+		Fixed operator++(void);
+		Fixed operator++(int);
+		Fixed operator--(void);
+		Fixed operator--(int);
 
 		int getRawBits(void) const;
 		void setRawBits(int const raw);
 
 		float toFloat(void) const;
 		int toInt(void) const;
+
+		static Fixed const &min(Fixed &a, Fixed &b);
+		static Fixed const &min(const Fixed &a, const Fixed &b);
+		static Fixed const &max(Fixed &a, Fixed &b);
+		static Fixed const &max(const Fixed &a, const Fixed &b);
 };
 
 std::ostream &operator<<(std::ostream &o, const Fixed &F);
