@@ -20,7 +20,7 @@ Point::Point(const float x, const float y)
 Point::Point(const Point &other)
 {
     //std::cout << "Copy constructor called" << std::endl;
-    (void) other;
+    *this = other;
     return ;
 }
 
@@ -31,6 +31,12 @@ Point &Point::operator=(const Point &other)
     this->_x = other._x;
 	this->_y = other._y;
     return (*this);
+}
+
+std::ostream &operator<<(std::ostream &o, const Point &P)
+{
+	o << "Point(" << P.getX() << ", " << P.getY() << ")";
+	return o;
 }
 
 // Destructor

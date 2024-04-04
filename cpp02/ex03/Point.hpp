@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 14:19:09 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/04/02 15:07:54 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/04/03 15:25:28 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ class Point
 		Fixed getY(void) const;
 };
 
-bool bsp(Point const a, Point const b, Point const c, Point const point);
+std::ostream &operator<<(std::ostream &o, const Point &F);
+
+bool bsp(Point const &a, Point const &b, Point const &c, Point const &point);
 
 #endif
