@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 11:01:51 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/04/09 16:01:41 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/04/10 10:11:23 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int main(void)
 		std::cout << std::endl;
 
 		jake.setIdea(0, "I am a god");
-		if (atticus.getIdea(0) != "I am a god")
+		if (atticus.getIdea(0) != "I am a god" && atticus.getIdea(0) == "I am a dog")
 			std::cout << "Deep copy confirmed" << std::endl;
 		else
 			std::cout << "Deep copy failed" << std::endl;

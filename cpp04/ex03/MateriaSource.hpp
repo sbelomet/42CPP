@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:18:45 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/04/10 10:06:29 by sbelomet         ###   ########.fr       */
+/*   Created: 2024/04/10 14:39:27 by sbelomet          #+#    #+#             */
+/*   Updated: 2024/04/10 14:57:20 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
-# include "Animal.hpp"
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
+# include "includes.h"
 
-class Dog : public Animal
+# define MEMORY_SIZE 4
+
+class MateriaSource : public IMateriaSource
 {
-    private:
-		Brain *brain;
+	private:
+		AMateria* _memory[MEMORY_SIZE];
 	
 	public:
-        Dog(void);
-        Dog(const Dog& other);
-        Dog &operator=(const Dog &other);
-        virtual ~Dog();
+		MateriaSource(void);
+		MateriaSource(const MateriaSource& other);
+		MateriaSource &operator=(const MateriaSource &other);
+		~MateriaSource();
 
-		void makeSound(void) const;
-		std::string getIdea(int index) const;
-		void setIdea(int index, const std::string &idea);
+		void learnMateria(AMateria*);
+		AMateria* createMateria(std::string const & type);
 };
 
 #endif

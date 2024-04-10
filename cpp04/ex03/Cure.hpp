@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 11:18:45 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/04/10 10:06:29 by sbelomet         ###   ########.fr       */
+/*   Created: 2024/04/10 10:58:16 by sbelomet          #+#    #+#             */
+/*   Updated: 2024/04/10 14:56:35 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
-# include "Animal.hpp"
+#ifndef CURE_HPP
+# define CURE_HPP
+# include "includes.h"
 
-class Dog : public Animal
+class Cure : public AMateria
 {
-    private:
-		Brain *brain;
-	
 	public:
-        Dog(void);
-        Dog(const Dog& other);
-        Dog &operator=(const Dog &other);
-        virtual ~Dog();
+		Cure(void);
+		Cure(const Cure& other);
+		Cure &operator=(const Cure &other);
+		~Cure();
 
-		void makeSound(void) const;
-		std::string getIdea(int index) const;
-		void setIdea(int index, const std::string &idea);
+		Cure *clone() const;
+		void use(ICharacter& target);
 };
 
 #endif
