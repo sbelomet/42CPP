@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 10:50:31 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/04/10 15:04:48 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:24:58 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 // Default constructor
 AMateria::AMateria(void)
 {
-	std::cout << "AMateria default constructor called" << std::endl;
+	//std::cout << "AMateria default constructor called" << std::endl;
 	return ;
 }
 
 // Copy constructor
 AMateria::AMateria(const AMateria &other)
 {
-	std::cout << "AMateria copy constructor called" << std::endl;
+	//std::cout << "AMateria copy constructor called" << std::endl;
 	*this = other;
 	return ;
 }
@@ -30,7 +30,7 @@ AMateria::AMateria(const AMateria &other)
 // Assignment operator overload
 AMateria &AMateria::operator=(const AMateria &other)
 {
-	std::cout << "AMateria assignment operator called" << std::endl;
+	//std::cout << "AMateria assignment operator called" << std::endl;
 	this->_type = other._type;
 	return (*this);
 }
@@ -38,7 +38,7 @@ AMateria &AMateria::operator=(const AMateria &other)
 // Destructor
 AMateria::~AMateria(void)
 {
-	std::cout << "AMateria destructor called" << std::endl;
+	//std::cout << "AMateria destructor called" << std::endl;
 	return ;
 }
 

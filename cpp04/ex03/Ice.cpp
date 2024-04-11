@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 10:58:19 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/04/10 11:40:23 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:24:10 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Default constructor
 Ice::Ice(void)
 {
-	std::cout << "Ice default constructor called" << std::endl;
+	//std::cout << "Ice default constructor called" << std::endl;
 	this->_type = "ice";
 	return ;
 }
@@ -23,7 +23,7 @@ Ice::Ice(void)
 // Copy constructor
 Ice::Ice(const Ice &other)
 {
-	std::cout << "Ice copy constructor called" << std::endl;
+	//std::cout << "Ice copy constructor called" << std::endl;
 	*this = other;
 	return ;
 }
@@ -31,7 +31,7 @@ Ice::Ice(const Ice &other)
 // Assignment operator overload
 Ice &Ice::operator=(const Ice &other)
 {
-	std::cout << "Ice assignment operator called" << std::endl;
+	//std::cout << "Ice assignment operator called" << std::endl;
 	this->_type = other._type;
 	return (*this);
 }
@@ -39,7 +39,7 @@ Ice &Ice::operator=(const Ice &other)
 // Destructor
 Ice::~Ice(void)
 {
-	std::cout << "Ice destructor called" << std::endl;
+	//std::cout << "Ice destructor called" << std::endl;
 	return ;
 }
 

@@ -6,7 +6,7 @@
 #    By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/04 10:58:20 by sbelomet          #+#    #+#              #
-#    Updated: 2024/04/10 15:11:57 by sbelomet         ###   ########.fr        #
+#    Updated: 2024/04/11 13:58:22 by sbelomet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ RAINBOW		=	$(RED)-$(YELLOW)-$(GREEN)-$(CYAN)-$(BLUE)-$(PURPLE)-
 
 # Sources
 
-FILES		=	main AMateria Ice Cure Character MateriaSource
+FILES		=	main AMateria Ice Cure Character MateriaSource LinkedList Node
 
 SRC			=	$(addsuffix .cpp, $(FILES))
 OBJ			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))

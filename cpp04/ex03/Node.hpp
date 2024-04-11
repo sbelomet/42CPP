@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.h                                         :+:      :+:    :+:   */
+/*   Node.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/10 14:53:47 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/04/11 13:51:19 by sbelomet         ###   ########.fr       */
+/*   Created: 2024/04/11 11:44:50 by sbelomet          #+#    #+#             */
+/*   Updated: 2024/04/11 14:00:08 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INCLUDES_H
-# define INCLUDES_H
-
-# include <iostream>
+#ifndef NODE_HPP
+# define NODE_HPP
 # include "AMateria.hpp"
-# include "ICharacter.hpp"
-# include "IMateriaSource.hpp"
-# include "Character.hpp"
-# include "Ice.hpp"
-# include "Cure.hpp"
-# include "MateriaSource.hpp"
-# include "LinkedList.hpp"
-# include "Node.hpp"
+
+class Node
+{
+	private:
+		AMateria* _materia;
+		Node* _next;
+	
+	public:
+		Node(void);
+		Node(const Node& other);
+		Node &operator=(const Node &other);
+		~Node();
+
+		AMateria* getMateria(void) const;
+		Node* getNext(void) const;
+		void setMateria(AMateria* materia);
+		void setNext(Node* next);
+};
 
 #endif
+

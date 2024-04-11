@@ -6,13 +6,14 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 11:27:10 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/04/10 14:56:59 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:19:45 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_HPP
 # define CHARACTER_HPP
 # include "includes.h"
+# include "LinkedList.hpp"
 
 # define INVENTORY_SIZE 4
 
@@ -22,6 +23,7 @@ class Character : public ICharacter
 		std::string _name;
 		//const AMateria** _inventory = new const AMateria*[INVENTORY_SIZE];
 		AMateria* _inventory[INVENTORY_SIZE];
+		LinkedList _garbage;
 	
 	public:
 		Character(void);

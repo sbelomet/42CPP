@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 10:58:13 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/04/10 15:10:18 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:24:20 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Default constructor
 Cure::Cure(void)
 {
-	std::cout << "Cure default constructor called" << std::endl;
+	//std::cout << "Cure default constructor called" << std::endl;
 	this->_type = "cure";
 	return ;
 }
@@ -23,7 +23,7 @@ Cure::Cure(void)
 // Copy constructor
 Cure::Cure(const Cure &other)
 {
-	std::cout << "Cure copy constructor called" << std::endl;
+	//std::cout << "Cure copy constructor called" << std::endl;
 	*this = other;
 	return ;
 }
@@ -31,7 +31,7 @@ Cure::Cure(const Cure &other)
 // Assignment operator overload
 Cure &Cure::operator=(const Cure &other)
 {
-	std::cout << "Cure assignment operator called" << std::endl;
+	//std::cout << "Cure assignment operator called" << std::endl;
 	this->_type = other._type;
 	return (*this);
 }
@@ -39,7 +39,7 @@ Cure &Cure::operator=(const Cure &other)
 // Destructor
 Cure::~Cure(void)
 {
-	std::cout << "Cure destructor called" << std::endl;
+	//std::cout << "Cure destructor called" << std::endl;
 	return ;
 }
 

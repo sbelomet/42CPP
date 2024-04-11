@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:40:02 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/04/10 15:53:41 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/04/11 10:36:53 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 // Default constructor
 MateriaSource::MateriaSource(void)
 {
-	std::cout << "MateriaSource default constructor called" << std::endl;
+	//std::cout << "MateriaSource default constructor called" << std::endl;
 	for (int i = 0; i < MEMORY_SIZE; i++)
-		this->_memory[i] = NULL;
+		this->_memory[i] = 0;
 	return ;
 }
 
 // Copy constructor
 MateriaSource::MateriaSource(const MateriaSource &other)
 {
-	std::cout << "MateriaSource copy constructor called" << std::endl;
+	//std::cout << "MateriaSource copy constructor called" << std::endl;
 	*this = other;
 	return ;
 }
@@ -32,7 +32,7 @@ MateriaSource::MateriaSource(const MateriaSource &other)
 // Assignment operator overload
 MateriaSource &MateriaSource::operator=(const MateriaSource &other)
 {
-	std::cout << "MateriaSource assignment operator called" << std::endl;
+	//std::cout << "MateriaSource assignment operator called" << std::endl;
 	(void) other;
 	return (*this);
 }
@@ -40,7 +40,19 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &other)
 // Destructor
 MateriaSource::~MateriaSource(void)
 {
-	std::cout << "MateriaSource destructor called" << std::endl;
+	//std::cout << "MateriaSource destructor called" << std::endl;
+	for (int i = 0; i < MEMORY_SIZE; i++)
+	{
+		if (this->_memory[i] != 0)
+		{
+			for (int j = i + 1; j < MEMORY_SIZE; j++)
+			{
+				if (this->_memory[j] == this->_memory[i])
+					this->_memory[j] = 0;
+			}
+			delete this->_memory[i];
+		}
+	}
 	return ;
 }
 
@@ -48,11 +60,10 @@ void MateriaSource::learnMateria(AMateria* m)
 {
 	int i = 0;
 	
-	while (this->_memory[i] == NULL)
+	while (i < MEMORY_SIZE && this->_memory[i] != 0)
 		i++;
 	if (i == MEMORY_SIZE)
 		return ;
-	std::cout << "learning a materia\n";
 	this->_memory[i] = m;
 }
 
@@ -60,11 +71,8 @@ AMateria* MateriaSource::createMateria(std::string const & type)
 {
 	for (int i = 0; i < MEMORY_SIZE; i++)
 	{
-		//std::cout << "in a for loop\n";
-		//std::cout << this->_memory[i]->getType() << std::endl;
 		if (this->_memory[i] && this->_memory[i]->getType() == type)
 		{
-			//std::cout << "in an if staement\n";
 			return this->_memory[i]->clone();
 		}
 	}
