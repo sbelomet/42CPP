@@ -1,58 +1,58 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/25 14:44:57 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/06/26 09:53:35 by sbelomet         ###   ########.fr       */
+/*   Created: 2024/06/26 10:48:13 by sbelomet          #+#    #+#             */
+/*   Updated: 2024/06/26 14:29:12 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
 // Default constructor
-Form::Form(void):
+AForm::AForm(void):
 	_name("UNNAMED"),_signed(false), _gradeToSign(150), _gradeToExecute(150)
 {
-	std::cout << "Form default constructor called" << std::endl;
+	std::cout << "AForm default constructor called" << std::endl;
 	return ;
 }
 
 // Constructor
-Form::Form(std::string name, int gradeToSign, int gradeToExecute):
+AForm::AForm(std::string name, int gradeToSign, int gradeToExecute):
 	_name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute)
 {
-	std::cout << "Form constructor called" << std::endl;
+	std::cout << "AForm constructor called" << std::endl;
 	if (_gradeToSign < 1 || _gradeToExecute < 1)
-		throw Form::GradeTooHighException();
+		throw AForm::GradeTooHighException();
 	if (_gradeToSign > 150 || _gradeToExecute > 150)
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	return ;
 }
 
 // Copy constructor
-Form::Form(const Form &other):
+AForm::AForm(const AForm &other):
 	_name(other._name), _gradeToSign(other._gradeToSign), _gradeToExecute(other._gradeToExecute)
 {
-	std::cout << "Form copy constructor called" << std::endl;
+	std::cout << "AForm copy constructor called" << std::endl;
 	*this = other;
 	return ;
 }
 
 // Assignment operator overload
-Form &Form::operator=(const Form &other)
+AForm &AForm::operator=(const AForm &other)
 {
-	std::cout << "Form assignment operator called" << std::endl;
+	std::cout << "AForm assignment operator called" << std::endl;
 	_signed = other._signed;
 	return (*this);
 }
 
 // << operator overload
-std::ostream &operator<<(std::ostream &out, const Form &form)
+std::ostream &operator<<(std::ostream &out, const AForm &form)
 {
-	out << "Form " << form.getName() << " is ";
+	out << "AForm " << form.getName() << " is ";
 	if (form.getSigned())
 		out << "signed";
 	else
@@ -62,49 +62,71 @@ std::ostream &operator<<(std::ostream &out, const Form &form)
 }
 
 // Destructor
-Form::~Form(void)
+AForm::~AForm(void)
 {
-	std::cout << "Form destructor called" << std::endl;
+	std::cout << "AForm destructor called" << std::endl;
 	return ;
 }
 
 // Getters
-std::string Form::getName(void) const
+std::string AForm::getName(void) const
 {
 	return (_name);
 }
 
-bool Form::getSigned(void) const
+bool AForm::getSigned(void) const
 {
 	return (_signed);
 }
 
-int Form::getGradeToSign(void) const
+int AForm::getGradeToSign(void) const
 {
 	return (_gradeToSign);
 }
 
-int Form::getGradeToExecute(void) const
+int AForm::getGradeToExecute(void) const
 {
 	return (_gradeToExecute);
 }
 
+std::string AForm::getTarget(void) const
+{
+	return (_target);
+}
+
+// Setters
+void AForm::setTarget(std::string target)
+{
+	_target = target;
+}
+
+void AForm::setSigned(bool is_signed)
+{
+	_signed = is_signed;
+}
+
 // beSigned member function
-void Form::beSigned(const Bureaucrat &bureaucrat)
+void AForm::beSigned(const Bureaucrat &bureaucrat)
 {
 	if (bureaucrat.getGrade() > _gradeToSign)
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 	_signed = true;
 }
 
 // GradeTooHighException class
-const char* Form::GradeTooHighException::what() const throw()
+const char* AForm::GradeTooHighException::what() const throw()
 {
 	return ("Grade is too high");
 }
 
 // GradeTooLowException class
-const char* Form::GradeTooLowException::what() const throw()
+const char* AForm::GradeTooLowException::what() const throw()
 {
 	return ("Grade is too low");
+}
+
+// FormNotSignedException class
+const char* AForm::FormNotSignedException::what() const throw()
+{
+	return ("Form hasn't been signed");
 }

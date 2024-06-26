@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 11:08:21 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/06/26 11:02:16 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/06/26 15:48:55 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ Bureaucrat::~Bureaucrat(void)
 // Setter
 void Bureaucrat::setGrade(int grade)
 {
-	_grade = grade;
-	if (_grade < 1)
+	if (grade < 1)
 		throw Bureaucrat::GradeTooHighException();
-	if (_grade > 150)
+	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
+	_grade = grade;
 }
 
 // Getters
@@ -74,18 +74,32 @@ int Bureaucrat::getGrade(void) const
 // Grade increment and decrement
 void Bureaucrat::incrementGrade(void)
 {
-	setGrade(_grade - 1);
+	try
+	{
+		setGrade(_grade - 1);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << _name << " grade incrementation failed: " << e.what() << std::endl;
+	}
 	return ;
 }
 
 void Bureaucrat::decrementGrade(void)
 {
-	setGrade(_grade + 1);
+	try
+	{
+		setGrade(_grade + 1);
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << _name << " grade incrementation failed: " << e.what() << std::endl;
+	}
 	return ;
 }
 
 // Sign form
-void Bureaucrat::signForm(Form &form) const
+void Bureaucrat::signForm(AForm &form) const
 {
 	try
 	{
@@ -99,6 +113,20 @@ void Bureaucrat::signForm(Form &form) const
 		std::cout << _name << " signed " << form.getName() << std::endl;
 	else
 		std::cout << _name << " couldn't sign " << form.getName() << " because grade is too low" << std::endl;
+}
+
+// Execute form
+void Bureaucrat::executeForm(const AForm &form) const
+{
+	try
+	{
+		form.execute(*this);
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << form.getName() << " execution failed: " << e.what() << std::endl;
+	}
 }
 
 // GradeTooHighException class
