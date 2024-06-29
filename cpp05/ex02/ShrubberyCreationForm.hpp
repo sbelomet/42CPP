@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
+/*   By: scherty <scherty@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:41:53 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/06/26 15:28:21 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/06/27 11:22:59 by scherty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ class ShrubberyCreationForm : public AForm
 {
 	public:
 		ShrubberyCreationForm(void);
-		ShrubberyCreationForm(std::string target);
+		ShrubberyCreationForm(const std::string &target);
 		ShrubberyCreationForm(const ShrubberyCreationForm& other);
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
 		virtual ~ShrubberyCreationForm();

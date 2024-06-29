@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
+/*   By: scherty <scherty@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:42:03 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/06/26 15:19:13 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/06/27 11:31:24 by scherty          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(void):
 }
 
 // Constructor
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target):
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target):
 	AForm("ShrubberyCreationForm", 145, 137)
 {
 	std::cout << "ShrubberyCreationForm constructor called" << std::endl;
@@ -68,35 +68,33 @@ std::ostream &operator<<(std::ostream &out, const ShrubberyCreationForm &form)
 	return (out);
 }
 
-// Execute function
+// Execute
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
 	if (executor.getGrade() > this->getGradeToExecute())
 		throw AForm::GradeTooLowException();
 	else if (!this->getSigned())
 		throw AForm::FormNotSignedException();
-	else
+
+	std::string filename = this->getTarget() + "_shrubbery";
+	std::ofstream fileOut(filename.c_str());
+
+	if (fileOut.is_open())
 	{
-		std::string filename = this->getTarget() + "_shrubbery";
-		std::ofstream fileOut(filename.c_str());
+		fileOut << "               ,@@@@@@@," << std::endl;
+		fileOut << "       ,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl;
+		fileOut << "    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o" << std::endl;
+		fileOut << "   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << std::endl;
+		fileOut << "   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'" << std::endl;
+		fileOut << "   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'" << std::endl;
+		fileOut << "   `&%\\ ` /%&'    |.|        \\ '|8'" << std::endl;
+		fileOut << "       |o|        | |         | |" << std::endl;
+		fileOut << "       |.|        | |         | |" << std::endl;
+		fileOut << "jgs \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_" << std::endl;
 
-		if (fileOut.is_open())
-		{
-			fileOut << "               ,@@@@@@@," << std::endl;
-			fileOut << "       ,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl;
-			fileOut << "    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o" << std::endl;
-			fileOut << "   ,%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << std::endl;
-			fileOut << "   %&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'" << std::endl;
-			fileOut << "   %&&%/ %&%%&&@@\\ V /@@' `88\\8 `/88'" << std::endl;
-			fileOut << "   `&%\\ ` /%&'    |.|        \\ '|8'" << std::endl;
-			fileOut << "       |o|        | |         | |" << std::endl;
-			fileOut << "       |.|        | |         | |" << std::endl;
-			fileOut << "jgs \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_" << std::endl;
-
-			fileOut.close();
-		}
-		else
-			throw std::runtime_error("Could not open file for writing.");
+		fileOut.close();
 	}
+	else
+		throw std::runtime_error("Could not open file for writing.");
 	return ;
 }
