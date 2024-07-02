@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scherty <scherty@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:42:11 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/06/27 10:50:14 by scherty          ###   ########.fr       */
+/*   Updated: 2024/07/02 09:48:46 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,3 @@ class RobotomyRequestForm : public AForm
 std::ostream &operator<<(std::ostream &out, const RobotomyRequestForm &form);
 
 #endif
-

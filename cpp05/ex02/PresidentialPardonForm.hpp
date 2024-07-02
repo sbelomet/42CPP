@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scherty <scherty@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:42:21 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/06/27 11:26:33 by scherty          ###   ########.fr       */
+/*   Updated: 2024/07/02 09:47:44 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,3 @@ class PresidentialPardonForm : public AForm
 std::ostream &operator<<(std::ostream &out, const PresidentialPardonForm &form);
 
 #endif
-

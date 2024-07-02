@@ -6,7 +6,7 @@
 #    By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/04 10:58:20 by sbelomet          #+#    #+#              #
-#    Updated: 2024/06/26 12:57:06 by sbelomet         ###   ########.fr        #
+#    Updated: 2024/07/02 09:53:34 by sbelomet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ clean:
 
 fclean:			clean
 					@rm -rf $(NAME)
+					@rm -rf *_shrubbery
 					@echo "$(CYAN)à la poubelle l'exec$(DEF_COLOR)🤤🤤🤤"
 
 re:				fclean all

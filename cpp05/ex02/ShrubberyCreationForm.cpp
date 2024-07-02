@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scherty <scherty@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:42:03 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/06/27 11:31:24 by scherty          ###   ########.fr       */
+/*   Updated: 2024/07/02 09:49:19 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
