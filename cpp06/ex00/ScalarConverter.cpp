@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/27 11:59:11 by scherty           #+#    #+#             */
-/*   Updated: 2024/07/02 14:38:12 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/07/03 11:28:20 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ScalarConverter::~ScalarConverter() {}
 ScalarConverter::ScalarConverter(const ScalarConverter &other) { (void)other; }
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) { (void)other; return *this;}
 
-void printImpossible(void)
+static void printImpossible(void)
 {
 	std::cout << "char: impossible" << std::endl;
 	std::cout << "int: impossible" << std::endl;
