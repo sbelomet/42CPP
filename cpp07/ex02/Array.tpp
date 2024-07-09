@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/03 11:40:09 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/07/03 12:53:45 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/07/09 15:09:02 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ Array<T> &Array<T>::operator=(const Array &src)
 template <typename T>
 Array<T>::~Array()
 {
-	delete[] _array;
+	if (_array)
+		delete[] _array;
 }
 
 // Operator []
