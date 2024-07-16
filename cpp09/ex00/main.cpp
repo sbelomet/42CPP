@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 10:40:32 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/07/10 11:48:11 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/07/16 11:34:29 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ int main(int ac, char **av)
 		std::cout << line << std::endl;
 	}
 	file.close();
+
+	BitcoinExchange btc("data.csv");
+	//std::cout << btc << std::endl;
 
 	return (0);
 }
