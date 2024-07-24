@@ -6,7 +6,7 @@
 #    By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/04 10:58:20 by sbelomet          #+#    #+#              #
-#    Updated: 2024/07/10 11:21:01 by sbelomet         ###   ########.fr        #
+#    Updated: 2024/07/24 11:24:54 by sbelomet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,10 @@
 
 # Variables
 
-NAME		=	bureaucrat4
-OBJ_DIR		=	objs/
+NAME		=	RPN
 CC			=	c++
-CFLAGS		=	-Wall -Wextra -Werror -std=c++98 -g
+CFLAGS		=	-Wall -Wextra -Werror -std=c++98
+OBJ_DIR		=	objs/
 
 # Colors
 
@@ -35,8 +35,7 @@ RAINBOW		=	$(RED)-$(YELLOW)-$(GREEN)-$(CYAN)-$(BLUE)-$(PURPLE)-
 
 # Sources
 
-FILES		=	main AForm Bureaucrat ShrubberyCreationForm RobotomyRequestForm \
-				PresidentialPardonForm Intern
+FILES		=	main RPN
 
 SRC			=	$(addsuffix .cpp, $(FILES))
 OBJ			=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))
@@ -66,7 +65,6 @@ clean:
 
 fclean:			clean
 					@rm -rf $(NAME)
-					@rm -rf *_shrubbery
 					@echo "$(CYAN)à la poubelle l'exec$(DEF_COLOR)🤤🤤🤤"
 
 re:				fclean all

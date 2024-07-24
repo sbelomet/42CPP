@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:53:01 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/07/09 15:12:46 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/07/23 11:48:17 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main()
 	{
 		Span sp = Span(5);
 
-		try
+		try // to find the shortest span on empty container
 		{
 			std::cout << sp.shortestSpan() << std::endl;
 		}
@@ -33,7 +33,7 @@ int main()
 		sp.addNumber(17);
 		sp.addNumber(9);
 		sp.addNumber(11);
-		try
+		try // to add number to full container
 		{
 			sp.addNumber(11);
 		}

@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:48:27 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/07/09 14:31:07 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/07/23 11:50:00 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,11 +104,11 @@ int Span::longestSpan(void) const
 // ContainerFullException class
 const char *Span::ContainerFullException::what() const throw()
 {
-	return ("Container is full");
+	return ("ERROR: Container is full");
 }
 
 // NotEnoughNumbersException class
 const char *Span::NotEnoughNumbersException::what() const throw()
 {
-	return ("Not enough numbers in the container");
+	return ("ERROR: Not enough numbers in the container");
 }

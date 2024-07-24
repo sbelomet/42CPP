@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 14:55:24 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/07/02 10:55:24 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/07/10 11:22:57 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int main()
 		b2.executeForm(*scf);
 
 		std::cout << std::endl;
+		if (scf)
+			delete scf;
 	}
 	catch (std::exception &e)
 	{

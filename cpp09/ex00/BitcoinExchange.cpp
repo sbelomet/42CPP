@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 10:41:15 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/07/23 14:01:36 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/07/24 11:19:57 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ BitcoinExchange::BitcoinExchange(void) {}
 // Constructor
 BitcoinExchange::BitcoinExchange(std::string dbFile)
 {
-	std::cout << "BitcoinExchange constructor called" << std::endl;
+	//std::cout << "BitcoinExchange constructor called" << std::endl;
 	parse(dbFile);
 	return ;
 }
@@ -28,7 +28,7 @@ BitcoinExchange::BitcoinExchange(std::string dbFile)
 // Copy constructor
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
 {
-	std::cout << "BitcoinExchange copy constructor called" << std::endl;
+	//std::cout << "BitcoinExchange copy constructor called" << std::endl;
 	*this = other;
 	return ;
 }
@@ -36,7 +36,7 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
 // Assignment operator overload
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 {
-	std::cout << "BitcoinExchange assignment operator called" << std::endl;
+	//std::cout << "BitcoinExchange assignment operator called" << std::endl;
 	_database = other._database;
 	return (*this);
 }
@@ -44,7 +44,7 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 // Destructor
 BitcoinExchange::~BitcoinExchange(void)
 {
-	std::cout << "BitcoinExchange destructor called" << std::endl;
+	//std::cout << "BitcoinExchange destructor called" << std::endl;
 	return ;
 }
 
@@ -102,7 +102,7 @@ static int parseDate(std::string &date)
 }
 
 // Parse value
-static float parseValue(std::string &value)
+static float parseValue(std::string &value, bool isDatabase)
 {
 	for (size_t i = 0; i < value.size(); i++)
 	{
@@ -110,7 +110,7 @@ static float parseValue(std::string &value)
 			throw BitcoinExchange::InvalidValueException();
 	}
 	float valueFloat = std::stof(value);
-	if (valueFloat < 0 || valueFloat > 1000)
+	if (valueFloat < 0 || (!isDatabase && valueFloat > 1000))
 		throw BitcoinExchange::InvalidValueException();
 	return (valueFloat);
 }
@@ -135,16 +135,17 @@ void BitcoinExchange::parse(const std::string dbFile)
 	}
 	while (std::getline(file, line))
 	{
-		std::string dateString = line.substr(0, line.find(","));
+		std::string date = line.substr(0, line.find(","));
 		std::string value = line.substr(line.find(",") + 1);
 		try
 		{
-			_database[parseDate(dateString)] = parseValue(value);
+			int dateInt = parseDate(date);
+			float valueFloat = parseValue(value, true);
+			_database[dateInt] = valueFloat;
 		}
 		catch (const std::exception &e)
 		{
-			std::cerr << e.what() << std::endl;
-			break;
+			std::cerr << "DATABASE " << e.what() << " => " << line << std::endl;
 		}
 	}
 	file.close();
@@ -153,7 +154,25 @@ void BitcoinExchange::parse(const std::string dbFile)
 // Convert
 void BitcoinExchange::convert(std::string line)
 {
-	std::cout << line << std::endl;
+	std::string date = line.substr(0, line.find(" | "));
+	std::string value = line.substr(line.find(" | ") + 3);
+
+	try
+	{
+		int dateInt = parseDate(date);
+		float valueFloat = parseValue(value, false);
+		
+		// Find the closest date in the database
+		std::map<int, float>::iterator dataBaseEq = _database.lower_bound(dateInt);
+		if (dataBaseEq->first != dateInt)
+			dataBaseEq--;
+		
+		std::cout << date << " => " << value << " = " << valueFloat * dataBaseEq->second << std::endl;
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << "INPUT " << e.what() << " => " << line << std::endl;
+	}
 }
 
 // << operator overload
@@ -161,7 +180,7 @@ std::ostream &operator<<(std::ostream &out, const BitcoinExchange &obj)
 {
 	std::map<int, float> dict = obj.getDatabase();
 	
-	out << "BitcoinExchange Dictionary: {";
+	out << "BitcoinExchange Database: {";
 	for (std::map<int, float>::const_iterator it = dict.begin(); it != dict.end(); ++it)
 	{
 		out << "[" << it->first << ":" << it->second << "]";

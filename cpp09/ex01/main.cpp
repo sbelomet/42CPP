@@ -6,49 +6,29 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 10:40:32 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/07/24 11:18:46 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/07/24 15:26:47 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
-#include <fstream>
+#include "RPN.hpp"
 
 int main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		std::cerr << "USAGE: ./btc <file>" << std::endl;
-		return (1);
-	}
-	std::ifstream file(av[1]);
-	if (!file.is_open())
-	{
-		std::cerr << "ERROR: could not open file" << std::endl;
+		std::cerr << "USAGE: ./RPN \"<EXPRESSION>\"" << std::endl;
 		return (1);
 	}
 
 	try
 	{
-		BitcoinExchange btc("data.csv");
-		//std::cout << btc << std::endl;
-	
-		std::string line;
-		if (std::getline(file, line) && line != "date | value")
-		{
-			std::cerr << "ERROR: invalid file header" << std::endl;
-			return (1);
-		}
-		while (std::getline(file, line))
-		{
-			btc.convert(line);
-		}
+		std::string str(av[1]);
+		RPN::calculate(str);
 	}
 	catch (const std::exception &e)
 	{
 		std::cerr << e.what() << std::endl;
 		return (1);
 	}
-	
-	file.close();
 	return (0);
 }

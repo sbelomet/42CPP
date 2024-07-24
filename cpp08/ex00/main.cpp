@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 10:09:21 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/07/09 10:38:24 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/07/23 11:45:54 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main()
 {
 	std::vector<int> vec;
 	for (int i = 0; i < 10; i++)
-		vec.push_back(i + 10);
+		vec.push_back(i + 10); // 10 11 12 13 14 15 16 17 18 19
 
 	try
 	{
