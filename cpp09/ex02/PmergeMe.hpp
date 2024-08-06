@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 10:05:07 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/07/25 13:13:13 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/08/06 11:17:16 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class PmergeMe
 		void parseArgs();
 
 		std::string _args;
+		size_t _size;
 	
 	public:
 		PmergeMe(const std::string &args);
