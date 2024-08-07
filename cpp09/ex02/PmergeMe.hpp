@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 10:05:07 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/08/06 11:17:16 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/08/07 13:04:38 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define PMERGEME_HPP
 # include <iostream>
 # include <vector>
-# include <list>
+# include <deque>
 
 class PmergeMe
 {
@@ -33,7 +33,7 @@ class PmergeMe
 
 		void sort();
 		void sortVector();
-		void sortList();
+		void sortDeque();
 
 		class InvalidArgument : public std::exception
 		{

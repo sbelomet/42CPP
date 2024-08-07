@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 10:41:15 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/07/24 11:19:57 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/08/07 11:19:41 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ static int parseDate(std::string &date)
 	}
 	
 	std::string year = date.substr(0, 4);
-	int yearInt = std::stoi(year);
+	int yearInt = atoi(year.c_str());
 	std::string month = date.substr(5, 2);
-	int monthInt = std::stoi(month);
+	int monthInt = atoi(month.c_str());
 	std::string day = date.substr(8, 2);
-	int dayInt = std::stoi(day);
+	int dayInt = atoi(day.c_str());
 	bool leapYear = (yearInt % 4 == 0 && yearInt % 100 != 0) || yearInt % 400 == 0;
 
 	if (monthInt > 12) // Check if month is valid

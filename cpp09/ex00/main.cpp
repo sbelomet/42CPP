@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 10:40:32 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/07/24 11:18:46 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/08/07 14:05:21 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int main(int ac, char **av)
 		}
 		while (std::getline(file, line))
 		{
+			if (line.empty())
+				continue;
 			btc.convert(line);
 		}
 	}
