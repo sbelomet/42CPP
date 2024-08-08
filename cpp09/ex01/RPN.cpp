@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 11:26:43 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/07/24 15:58:47 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/08/08 10:15:33 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,11 @@ void RPN::calculate(std::string &str)
 			else if (str[i] == '*')
 				stack.push(b * a);
 			else if (str[i] == '/')
+			{
+				if (a == 0)
+					throw InvalidExpressionException();
 				stack.push(b / a);
+			}
 		}
 	}
 	if (stack.size() != 1)

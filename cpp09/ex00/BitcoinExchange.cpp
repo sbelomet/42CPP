@@ -6,7 +6,7 @@
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 10:41:15 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/08/07 11:19:41 by sbelomet         ###   ########.fr       */
+/*   Updated: 2024/08/08 10:20:15 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static int parseDate(std::string &date)
 	int dayInt = atoi(day.c_str());
 	bool leapYear = (yearInt % 4 == 0 && yearInt % 100 != 0) || yearInt % 400 == 0;
 
-	if (monthInt > 12) // Check if month is valid
+	if (monthInt > 12 || monthInt < 1 || dayInt < 1) // Check if month is valid and day is over 0
 	{
 		throw BitcoinExchange::InvalidDateException();
 	}
