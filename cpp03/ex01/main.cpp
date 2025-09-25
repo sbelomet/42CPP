@@ -58,6 +58,7 @@ int main(void)
 		std::cout << Garnet << std::endl;
 		Garnet.attack("Jasper");
 		Garnet.attack("Aquamarine");
+		Garnet.beRepaired(3);
 		std::cout << Garnet << std::endl;
 		Garnet.guardGate();
 	}

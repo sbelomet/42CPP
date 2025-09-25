@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbelomet <sbelomet@42lausanne.ch>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/09 10:10:12 by sbelomet          #+#    #+#             */
-/*   Updated: 2024/07/10 14:43:43 by sbelomet         ###   ########.fr       */
+/*   Created: 2024/03/26 14:45:02 by sbelomet          #+#    #+#             */
+/*   Updated: 2024/03/26 14:50:11 by sbelomet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
-# include <algorithm>
+#ifndef HARL_HPP
+# define HARL_HPP
 # include <iostream>
 
-template <typename T>
-typename T::iterator easyfind(T &container, int n)
+class Harl
 {
-	typename T::iterator it = std::find(container.begin(), container.end(), n);
-	if (it == container.end())
-		throw std::exception();
-	return it;
-}
+	private:
+		void debug(void);
+		void info(void);
+		void warning(void);
+		void error(void);
+
+	public:
+		Harl(void);
+		~Harl(void);
+
+		void complain(std::string level);
+};
 
 #endif
